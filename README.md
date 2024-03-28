@@ -1,6 +1,6 @@
 # saliency_with_histogram_equalization
 
-Step 1: Load the Model
+## Step 1: Load the Model
 ```
 import torch
 from torchvision import models
@@ -13,7 +13,7 @@ model.eval()  # Set the model to evaluation mode
 ```
 The pre-trained ResNet-50 model is loaded and the model is set to evaluation mode. This mode ensures the behaviors specific to training are disabled and give continuous inference results.
 
-Step 2: Preprocess the Model
+## Step 2: Preprocess the Model
 ```
 from torchvision import transforms
 from PIL import Image
@@ -33,7 +33,7 @@ img_tensor.unsqueeze_(0)
 ```
 The input images is loaded and preprocessed based on the input format required by the model (resnet-50).
 
-Step 3: Perform Forward and Backward Passes
+## Step 3: Perform Forward and Backward Passes
 ```
 # Gradients are enabled
 img_tensor.requires_grad_(True)
@@ -53,7 +53,7 @@ score.backward()
 
 By setting the “requires_grad ”of img_tensor to True, PyTorch tracks the operations on the tensor using PyTorch’s autograd system. Further, The forward pass is done by feeding the model with the input, which returns the predicted output. Next, The class with highest prediction score for the input image is chosen. The “model.zero_grad()” helps to prevent the accumulation of gradients by clearing the existing gradient. Then lastly, backward pass is done to calculate the gradient with respect to the predicted class.
 
-Step 4: Generate the Saliency Map
+## Step 4: Generate the Saliency Map
 ```
 import numpy as np
 from scipy.ndimage import zoom
@@ -82,7 +82,7 @@ saliency_map_resized_eq = zoom(gradients_eq, zoom_factors, order=1)
 
 The gradients are processed to create a Saliency Map, which is then normalized and then resized to the original image size for visualizations. This equalized gradient is also been resized to the original image size.
 
-Step 5: Visualize the Results
+## Step 5: Visualize the Results
 ```
 import matplotlib.pyplot as plt
 
@@ -113,4 +113,4 @@ plt.show()
 ```
 Finally, we visualize the original image alongside with the raw Saliency Map, Saliency Map with Histogram Equalization and overlaying it on top of the image to see which areas influenced by the model’s decision.
 
-Step 6: Result
+## Step 6: Result

@@ -114,3 +114,4 @@ plt.show()
 Finally, we visualize the original image alongside with the raw Saliency Map, Saliency Map with Histogram Equalization and overlaying it on top of the image to see which areas influenced by the model’s decision.
 
 ## Step 6: Result
+![result](https://github.com/Newgin-sam/saliency_with_histogram_equalization/assets/60768808/2d0c8f84-cf9c-4cc2-927b-36253646a013)

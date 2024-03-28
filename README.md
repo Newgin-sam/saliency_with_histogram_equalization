@@ -1,8 +1,8 @@
 # saliency_with_histogram_equalization
 
-Step 1: Load the Model
+{Step 1: Load the Model
 import torch
-from torchvision import models
+from torchvision import models}
 
 # Load the pre-trained ResNet-50 model
 model = models.resnet50(pretrained=True)
